@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Menu</h1>
+
+<!-- Begin column -->
+<div class="column">
+    {% for item in menu %}
+    <div style="margin-bottom: 25px;">
+
+        <a href="{% url 'menu_item' pk=item.pk %}">
+            <h3>{{ item.name }}</h3>
+        </a>
+
+        <img src="{% static item.image %}"
+             alt="{{ item.name }}"
+             width="180"
+             style="border-radius:10px; display:block; margin-bottom:10px;">
+
+        <p class="menu-price">
+            ₹{{ item.price }}.00
+        </p>
+
+    </div>
+    {% endfor %}
+</div>
+<!-- End column -->
+
+{% endblock %}
